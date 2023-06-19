@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %} 
+
+{% block titulo %}
+    Lista de Autores
+{% endblock titulo %}
+{% block body %}
+  {% block nav %}
+     <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+        <a href="#" class="brand-logo"><img style="margin:5px" src="{% static 'img/logo.png' %}" width="120" height="50" alt="theftsafe"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><b>Autores</b></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+
+        <!-- Ícono para abrir en móvil -->
+        <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <!--  Menu Móvil -->
+        <ul id="mobile-navbar" class="sidenav">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><em>Autores</em></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+        </div>
+     </nav>
+  {% endblock nav %}
+
+
+    {% if autores %}
+    <div class="row">
+        <table class="col s9" >
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo electrónico</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for autor in autores %}
+                <tr>
+                    <td>{{ autor.id }}</td>
+                    <td>{{ autor.nombres }}</td>
+                    <td>{{ autor.apellidos }}</td>
+                    <td>{{ autor.correo }}</td>
+                    <td>
+                        <a href="{% url 'blog:editar_autor' autor.id%}" class="btn teal accent-3 black-text waves-effect waves-light" type="submit"
+                            name="action">
+                            Editar
+                        </a>
+                        <a href="{% url 'blog:eliminar_autor' autor.id%}" class="btn red waves-effect waves-light" type="submit" name="action">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h1>No existen Autores registrados</h1>
+        {% endif %}
+    </div>
+    <a href="{% url 'blog:administrador' %}" class="btn blue accent-1 black-text waves-effect waves-light">Volver
+        <i class="material-icons left">arrow_back</i>
+    </a>
+{% endblock body %}

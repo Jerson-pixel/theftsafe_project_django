@@ -1,0 +1,217 @@
+{% extends 'home.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" href="{% static 'img/logo.ico' %}" />
+  <title>{% block titulo %}TheftSafe{% endblock titulo %}</title>
+
+  <!-- CSS  -->
+  {% block extracss %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/estilos.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  {% endblock extracss %}
+</head>
+<body>
+  {% block body %}
+  <!-- Navigation -->
+  {% block nav %}
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo"><img style="margin:5px" src="{% static 'img/logo.png' %}" width="120" height="50" alt="theftsafe"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#contacto"><i class="material-icons right">phone</i><b>Contáctenos</b></a></li>
+        <li><a href="#"><i class="material-icons right">person_add</i><b>Registrar usuario</b></a></li>
+        <li><a href="{% url 'blog:administrador' %}"><i class="material-icons left">person_pin</i><b>Administrador</b></a></li>
+      </ul>
+
+      <!-- Ícono para abrir en móvil -->
+      <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <!--  Menu Móvil -->
+      <ul id="mobile-navbar" class="sidenav">
+        <li><a href="#contacto"><i class="material-icons right">phone</i><em>Contáctenos</em></a></li>
+        <li><a href="#"><i class="material-icons right">person_add</i><em>Registrar usuario</em></a></li>
+        <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_pin</i><b>Administrador</b></a></li>
+      </ul>
+    </div>
+  </nav>
+  {% endblock nav %}
+
+
+  <!-- Main content -->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center red-text text-lighten-2">TheftSafe</h1>
+        <div class="row center">
+          <h5 class="header col s12 white-text light">La tranquilidad en su hogar que sólo TheftSafe le puede entregar </h5>
+        </div>
+        <div class="row center">
+          <a href="{% url 'blog:home' %}" id="download-button" class="btn-large waves-effect waves-light red lighten-1">Conoce Más</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'img/casa.jpg' %}" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">remove_red_eye</i></h2>
+            <h5 class="center black-text">Vigilamos</h5>
+
+            <p class="center light">Por medio de sensores estratégicamente instalados en puertas y ventanas, detectamos intrusos, logrando informar oportunamente a los usuarios.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">lock</i></h2>
+            <h5 class="center">Protegemos</h5>
+
+            <p class="center light">Con nuestro sistema buscamos brindar una seguridad para toda la familia, resguardando todo el perímetro del hogar, además de actuar en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">screen_lock_portrait</i></h2>
+            <h5 class="center">Comodidad</h5>
+
+            <p class="center light">Al alcance de sus manos, vea todo desde cualquier dispositivo Móvil.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'img/tele.jpg' %}" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <!--Section: Contacto -->
+
+  <div class="container">
+    <div id="contacto" class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Contáctenos</h4>
+          <p class="center light">Puede llamar las 24 horas del día, 365 días al año para solicitar una contratación de nuestros servicios, consultar sobre el manejo del sistema de alarma, etc.</p>
+        </div>
+      </div>
+
+      <section class="section section-contacto scrollspy">
+        <div class="container">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input type="text" class="validate">
+                  <label for="icon_prefix">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">email</i>
+                  <input type="email" class="validate">
+                  <label for="icon_email">Correo</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">message</i>
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="icon_prefix">Mensaje</label>
+                </div>
+              </div>
+              <input type="submit" value="Enviar" class="black btn-large">
+            </form>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'img/segu.jpg' %}" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <footer class="page-footer red">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Quiénes Somos</h5>
+          <p class="grey-text text-lighten-4">Somos una empresa lider en el mercado de seguridad para los hogares. Brindamos un sistema completo para el bienestar de la familia.</p>
+
+
+        </div>
+        
+        <div id="footer " class="col l4 offset-l2 s12">
+          <h5 class="white-text">Redes Sociales</h5>
+		  <ul>
+            <li><a href=""><img style="margin:6px" src="{% static 'img/ins.ico' %}" width="30" height="30" alt="Instagram"></a></li>
+			<li><a href=""><img style="margin:6px" src="{% static 'img/face.ico' %}" width="30" height="30" alt="Facebook"></a></li>
+			<li><a href=""><img style="margin:6px" src="{% static 'img/twi.ico' %}" width="30" height="30" alt="Twitter"></a></li>
+          </ul>
+		  
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+		<p class="center">©Copyright TheftSafe 2019</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  {% block extrajs %}
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+  <script>
+    elemsSidenav = document.querySelectorAll(".sidenav");
+    const instancesSidenav = M.Sidenav.init(elemsSidenav, {
+      edge: "left"
+    });
+  </script>
+  {% endblock extrajs %}
+
+  {% endblock body %}
+  </body>
+  
+</html>

@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block titulo %}Administrador{% endblock titulo %}
+{% block extracss %}
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="{% static 'css/estilos.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+{% endblock extracss %}
+
+    {% block body %}
+     {% block nav %}
+     <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+        <a href="#" class="brand-logo"><img style="margin:5px" src="{% static 'img/logo.png' %}" width="120" height="50" alt="theftsafe"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons right">person_add</i><b>Autores</b></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+
+        <!-- Ícono para abrir en móvil -->
+        <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <!--  Menu Móvil -->
+        <ul id="mobile-navbar" class="sidenav">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><em>Autores</em></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+        </div>
+     </nav>
+     {% endblock nav %}
+
+      <!-- Opcion AUTORES -->
+        <div class="container-content center">
+            <h3>Autores:</h3>
+            <li>
+                <a href="{% url 'blog:crear_autor' %}" class="blue white-text waves-effect waves-light btn">Crear Autor</a>
+                <a href="{% url 'blog:listar_autor' %}" class="teal darken-4 white-text waves-effect waves-light btn">Listar Autor</a>
+            </li> 
+        </div>
+    {% endblock body %}
+

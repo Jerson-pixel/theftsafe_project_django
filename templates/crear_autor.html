@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block titulo %}
+    Creación de Autores
+{% endblock titulo %}
+{% block body %}
+{% block nav %}
+     <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+        <a href="#" class="brand-logo"><img style="margin:5px" src="{% static 'img/logo.png' %}" width="120" height="50" alt="theftsafe"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><b>Autores</b></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+
+        <!-- Ícono para abrir en móvil -->
+        <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <!--  Menu Móvil -->
+        <ul id="mobile-navbar" class="sidenav">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><em>Autores</em></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+        </div>
+     </nav>
+     {% endblock nav %}
+
+
+        <div class="row">
+            <form class="col s6" method="POST">
+                {% csrf_token %}
+                {% if error %}
+                    <h2>{{ error }}</h2>
+                {% else %}
+                    {{ autor_form.as_p }}
+                    <a href="{% url 'blog:administrador' %}" class="btn blue accent-1 black-text waves-effect waves-light">Volver
+                        <i class="material-icons left">arrow_back</i>
+                    </a>
+                    <button class="btn yellow black-text waves-effect waves-light" type="submit" name="action">Crear Autor
+                        <i class="material-icons right">person_add</i>
+                    </button>
+                {% endif %}
+            </form> 
+        </div>
+{% endblock body %}

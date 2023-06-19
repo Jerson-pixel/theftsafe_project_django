@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block titulo %}
+    Eliminación de Hotel
+{% endblock titulo %}
+{% block body %}
+{% block nav %}
+     <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+        <a href="#" class="brand-logo"><img style="margin:5px" src="{% static 'img/logo.png' %}" width="120" height="50" alt="theftsafe"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><b>Autores</b></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+
+        <!-- Ícono para abrir en móvil -->
+        <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <!--  Menu Móvil -->
+        <ul id="mobile-navbar" class="sidenav">
+            <li><a href="{% url 'blog:administrador' %}"><i class="material-icons right">person_add</i><em>Autores</em></a></li>
+            <li><a href="{% url 'index' %}"><i class="material-icons right">exit_to_app</i><b>Cerrar sesión</b></a></li>
+        </ul>
+        </div>
+     </nav>
+     {% endblock nav %}
+
+
+<form method="POST">
+    {% csrf_token %}
+    <h2>¿Desea eliminar el registro {{ autor.nombres }}?</h2>
+    <button class="btn red waves-effect waves-light" type="submit" name="action">
+        Eliminar
+    </button>
+    <a href="{% url 'blog:listar_autor' %}">Cancelar</a>
+
+</form>
+
+{% endblock body %}
